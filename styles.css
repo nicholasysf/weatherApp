@@ -60,3 +60,12 @@ input.search-bar {
     align-items: center;
   }
 
+.weather.loading{
+    visibility:hidden;
+}
+
+.weather.loading::after{
+    visibility:visible;
+    content:"Loading....";
+    color: white;
+}

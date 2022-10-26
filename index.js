@@ -22,7 +22,21 @@ let weather = {
         document.querySelector(".description").innerText = `${description}`;
         document.querySelector(".humidity").innerText = `Humidity: ${humidity} %`;
         document.querySelector(".wind").innerText = `Wind speed: ${speed} km/h`;
+        document.querySelector(".weather").classList.remove("loading");
+    },
+    search : function() {
+        weather.fetchWeather(document.querySelector(".search-bar").value);
     }
 };
-
-document.querySelector(".search button").addEventListener("click",)
+// whenever user clicks the search button, it will trigger search function.
+document.querySelector(".search button").addEventListener("click",function(){
+    weather.search();
+})
+// whenever user presses the "enter" key when typing in the text input, it will trigger search function.
+document.querySelector(".search-bar").addEventListener("keyup",function(event){
+    if(event.key == "Enter"){
+        weather.search();
+    }
+});
+// Default page load will show Singapore's weather until someone searches for a new city/country
+weather.fetchWeather("Singapore");
